@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {DataTableComponent} from './data-table/data-table.component';
+import {DataTableEmployeesComponent} from './data-table/employees/data-table-employees.component';
 
 const routes: Routes = [
-  { path: 'employees', component: DataTableComponent}
+  { path: 'employees', component: DataTableEmployeesComponent}
 ];
 
 @NgModule({
@@ -15,4 +15,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [DataTableComponent];
+export const routingComponents = [DataTableEmployeesComponent];

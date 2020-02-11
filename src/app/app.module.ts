@@ -9,6 +9,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MenuComponent } from './menu/menu.component';
 import {MatIconModule, MatMenuModule, MatCardModule, MatButtonModule} from '@angular/material';
 import { AppRoutingModule, routingComponents} from './app-routing.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AppRoutingModule, routingComponents} from './app-routing.module';
     MatMenuModule,
     MatCardModule,
     MatButtonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
