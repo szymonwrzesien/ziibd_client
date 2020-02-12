@@ -23,9 +23,7 @@ export class DataTableEmployeesComponent implements  OnInit {
     'email',
     'jobId',
     'salary',
-    'commissionPct',
-    'managerId',
-    'phoneNumber',];
+    'phoneNumber'];
 
   ngOnInit() {
     this.dataService.getEmployees().subscribe(data => {
@@ -33,6 +31,10 @@ export class DataTableEmployeesComponent implements  OnInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
+  }
+
+  selectRow(row) {
+    console.log(row);
   }
 
 }

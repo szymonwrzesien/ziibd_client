@@ -10,12 +10,16 @@ import { MenuComponent } from './menu/menu.component';
 import {MatIconModule, MatMenuModule, MatCardModule, MatButtonModule} from '@angular/material';
 import { AppRoutingModule, routingComponents} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
+import { ButtonsComponent } from './buttons/buttons.component';
+import { DataTableJobsComponent } from './data-table/data-table-jobs/data-table-jobs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    routingComponents
+    routingComponents,
+    ButtonsComponent,
+    DataTableJobsComponent
   ],
   imports: [
     BrowserModule,
