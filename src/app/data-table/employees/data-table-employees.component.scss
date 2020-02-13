@@ -4,5 +4,18 @@
 }
 
 .mat-column-employeeId{
-  max-width: 80px;
+  max-width: 60px;
+}
+.mat-row:hover {
+  background-color: gray;
+}
+.button-row{
+  .mat-flat-button{
+    margin: 5px;
+  }
+  margin:auto;
+}
+
+mat-row.highlight{
+  background-color: red;
 }

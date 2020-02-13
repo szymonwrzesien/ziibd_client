@@ -27,7 +27,6 @@ export class DataTableJobsComponent implements OnInit {
     this.dataService.getJobs().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
     });
 
   }

@@ -7,11 +7,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MenuComponent } from './menu/menu.component';
-import {MatIconModule, MatMenuModule, MatCardModule, MatButtonModule} from '@angular/material';
+import {MatIconModule, MatMenuModule, MatCardModule, MatButtonModule, MatDialogModule} from '@angular/material';
 import { AppRoutingModule, routingComponents} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { ButtonsComponent } from './buttons/buttons.component';
-import { DataTableJobsComponent } from './data-table/data-table-jobs/data-table-jobs.component';
+import { DataTableJobsComponent } from './data-table/jobs/data-table-jobs.component';
+import { NewEmployeeDialogComponent } from './new-employee-dialog/new-employee-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DataTableJobsComponent } from './data-table/data-table-jobs/data-table-
     MenuComponent,
     routingComponents,
     ButtonsComponent,
-    DataTableJobsComponent
+    DataTableJobsComponent,
+    NewEmployeeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,11 @@ import { DataTableJobsComponent } from './data-table/data-table-jobs/data-table-
     MatCardModule,
     MatButtonModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    NewEmployeeDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

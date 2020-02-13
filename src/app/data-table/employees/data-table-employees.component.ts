@@ -15,6 +15,8 @@ export class DataTableEmployeesComponent implements  OnInit {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   dataSource: MatTableDataSource<any>;
 
+  // buttonDisabled = true; //?
+ // selectedRowIndex = -1; //?
   constructor(private dataService: DataService) {}
   displayedColumns = [
     'employeeId',
@@ -32,9 +34,11 @@ export class DataTableEmployeesComponent implements  OnInit {
       this.dataSource.paginator = this.paginator;
     });
   }
-
+// w którym komponencie? //jak zmienic tło w zaznaczonym wierszu
   selectRow(row) {
     console.log(row);
+   // this.buttonDisabled = false;
+   // this.selectedRowIndex = row.id;
   }
 
 }
