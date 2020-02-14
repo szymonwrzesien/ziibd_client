@@ -16,7 +16,7 @@ export class DataTableEmployeesComponent implements  OnInit {
   dataSource: MatTableDataSource<any>;
 
   // buttonDisabled = true; //?
- // selectedRowIndex = -1; //?
+// selectedRowIndex = -1; //?
   constructor(private dataService: DataService) {}
   displayedColumns = [
     'employeeId',
