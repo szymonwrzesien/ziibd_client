@@ -1,22 +1,37 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Employee} from '../model/Employee';
 import {Job} from '../model/Job';
 
-const url = 'http://localhost:8080';
+const URL = 'http://localhost:8080';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
- getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(url + '/employees');
- }
+  getEmployees(): Observable<Employee[]> {
 
- getJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>(url + '/jobs' );
- }
+    return this.http.get<Employee[]>(URL + '/employees');
+  }
+
+  getJobs(): Observable<Job[]> {
+    return this.http.get<Job[]>(URL + '/jobs');
+  }
+
+  saveNewEmployee(employee: Employee) {
+    return this.http.post(URL + '/saveNewEmployee', employee);
+  }
+
+  deleteEmployee(employee: Employee) {
+    return this.http.post(URL + '/deleteEmployee', employee);
+  }
+
+  updateEmployee(employee: Employee) {
+    return this.http.post(URL + '/updateEmployee', employee);
+  }
 }

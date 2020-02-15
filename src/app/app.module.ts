@@ -17,16 +17,15 @@ import {
 } from '@angular/material';
 import { AppRoutingModule, routingComponents} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
-import { ButtonsComponent } from './buttons/buttons.component';
 import { DataTableJobsComponent } from './data-table/jobs/data-table-jobs.component';
 import { NewEmployeeDialogComponent } from './new-employee-dialog/new-employee-dialog.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     routingComponents,
-    ButtonsComponent,
     DataTableJobsComponent,
     NewEmployeeDialogComponent
   ],
@@ -44,7 +43,8 @@ import { NewEmployeeDialogComponent } from './new-employee-dialog/new-employee-d
     HttpClientModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule
   ],
   entryComponents: [
     NewEmployeeDialogComponent

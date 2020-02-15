@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Employee} from '../model/Employee';
+import {DataService} from '../services/data.service';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-new-employee-dialog',
@@ -8,23 +10,18 @@ import {Employee} from '../model/Employee';
 })
 export class NewEmployeeDialogComponent implements OnInit {
   newEmployee: Employee;
-  employeeId: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  jobId: string;
-  salary: string;
-  commissionPct: string;
-  managerId: string;
-  phoneNumber: string[];
 
-  constructor() { }
+
+  constructor(private dataService: DataService, public dialogRef: MatDialogRef<NewEmployeeDialogComponent>) {
+  }
 
   ngOnInit() {
+    this.newEmployee = new Employee();
   }
 
   Add() {
-     this.newEmployee = new Employee();
-     this.newEmployee.firstName = this.firstName;
+    this.dataService.saveNewEmployee(this.newEmployee).subscribe();
+    this.dialogRef.close();
+
   }
 }

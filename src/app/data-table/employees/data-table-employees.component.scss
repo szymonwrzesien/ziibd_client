@@ -3,19 +3,20 @@
   margin: 20px auto;
 }
 
-.mat-column-employeeId{
+.mat-column-employeeId {
   max-width: 60px;
 }
-.mat-row:hover {
-  background-color: gray;
-}
-.button-row{
-  .mat-flat-button{
+
+.button-row {
+  .mat-flat-button {
     margin: 5px;
   }
-  margin:auto;
+  margin: auto;
+}
+.mat-row.hovered {
+  background: #eee;
 }
 
-mat-row.highlight{
-  background-color: red;
+.mat-row.highlighted {
+  background: #999;
 }

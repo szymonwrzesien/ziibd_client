@@ -1,57 +1,37 @@
 <div class="container">
-  <mat-form-field appearance="fill">
-    <mat-label>Employee Id</mat-label>
-    <input matInput>
-  </mat-form-field>
+  <!--grid material na 2 kolumny-->
 
   <mat-form-field appearance="fill">
     <mat-label>First Name</mat-label>
-    <input matInput>
+    <input matInput [(ngModel)]="newEmployee.firstName">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Last Name</mat-label>
-    <input matInput>
+    <input matInput [(ngModel)]="newEmployee.lastName">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
-    <input matInput>
+    <input matInput [(ngModel)]="newEmployee.email">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Phone Number</mat-label>
-    <input matInput>
+    <input matInput [(ngModel)]="newEmployee.phoneNumber">
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Hire Date</mat-label>
-    <input matInput>
-  </mat-form-field>
 
-  <mat-form-field appearance="fill">
+<!--  <mat-form-field appearance="fill">
     <mat-label>Job Id</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <input matInput [(ngModel)]="newEmployee.jobId">
+  </mat-form-field>-->
 
   <mat-form-field appearance="fill">
     <mat-label>Salary</mat-label>
-    <input matInput>
+    <input matInput [(ngModel)]="newEmployee.salary">
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Commission Ptc</mat-label>
-    <input matInput>
-  </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Manager Id</mat-label>
-    <input matInput>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Department Id</mat-label>
-    <input matInput>
-  </mat-form-field>
   <button mat-flat-button color="accent" (click)="Add()">add</button>
 </div>

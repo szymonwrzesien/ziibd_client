@@ -1,8 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {DataService} from '../../services/data.service';
+import {NewEmployeeDialogComponent} from '../../new-employee-dialog/new-employee-dialog.component';
+import {MatDialog} from '@angular/material';
+import {SelectionModel} from '@angular/cdk/collections';
+import {Employee} from '../../model/Employee';
 
 
 @Component({
@@ -10,14 +14,14 @@ import {DataService} from '../../services/data.service';
   templateUrl: './data-table-employees.component.html',
   styleUrls: ['./data-table-employees.component.scss']
 })
-export class DataTableEmployeesComponent implements  OnInit {
+export class DataTableEmployeesComponent implements OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   dataSource: MatTableDataSource<any>;
-
-  // buttonDisabled = true; //?
-// selectedRowIndex = -1; //?
-  constructor(private dataService: DataService) {}
+  selectedRow: Employee;
+  buttonDisabled = true; //?
+  selection: SelectionModel<Employee>;
+  isSelected = false;
   displayedColumns = [
     'employeeId',
     'firstName',
@@ -26,19 +30,68 @@ export class DataTableEmployeesComponent implements  OnInit {
     'jobId',
     'salary',
     'phoneNumber'];
+  employeesArray: Employee[] = [];
+
+  constructor(private dataService: DataService, public dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.dataService.getEmployees().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
+      this.saveDataFromServer(data);
+
     });
   }
-// w którym komponencie? //jak zmienic tło w zaznaczonym wierszu
-  selectRow(row) {
-    console.log(row);
-   // this.buttonDisabled = false;
-   // this.selectedRowIndex = row.id;
+
+  saveDataFromServer(data: any) {
+    this.employeesArray = data;
+    this.dataSource = new MatTableDataSource(this.employeesArray);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.selection = new SelectionModel<Employee>(false);
   }
 
+  AddNewEmployee() {
+    this.openDialog(false);
+  }
+
+  openDialog(isUpdate: boolean): void {
+/*    if (isUpdate === true) {
+
+    }*/
+    const dialogRef = this.dialog.open(NewEmployeeDialogComponent, {});
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      this.dataService.getEmployees().subscribe(data => this.saveDataFromServer(data));
+    });
+
+  }
+
+  selectRecord(row: any) {
+
+    this.selection.toggle(row);
+
+/*    if (row === this.selectedRow && !this.isSelected) {
+      this.isSelected = !this.isSelected;
+      this.buttonDisabled = !this.isSelected;
+    } else if (row !== this.selectedRow) {
+      this.buttonDisabled = false;
+      this.isSelected = true;
+    }*/
+
+    this.buttonDisabled = false;
+    this.selectedRow = row;
+
+
+  }
+
+  deleteEmployee() {
+    this.dataService.deleteEmployee(this.selectedRow).subscribe();
+    this.dataService.getEmployees().subscribe(data => this.saveDataFromServer(data));
+  }
+
+  updateEmployee() {
+    this.openDialog(true);
+
+  }
 }
