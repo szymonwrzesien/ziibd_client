@@ -19,7 +19,7 @@ export class DataTableEmployeesComponent implements OnInit {
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   dataSource: MatTableDataSource<any>;
   selectedRow: Employee;
-  buttonDisabled = true; //?
+  buttonDisabled = true;
   selection: SelectionModel<Employee>;
   isSelected = false;
   displayedColumns = [
@@ -55,9 +55,9 @@ export class DataTableEmployeesComponent implements OnInit {
   }
 
   openDialog(isUpdate: boolean): void {
-/*    if (isUpdate === true) {
+    /*    if (isUpdate === true) {
 
-    }*/
+        }*/
     const dialogRef = this.dialog.open(NewEmployeeDialogComponent, {});
 
     dialogRef.afterClosed().subscribe(result => {
@@ -68,21 +68,15 @@ export class DataTableEmployeesComponent implements OnInit {
   }
 
   selectRecord(row: any) {
-
     this.selection.toggle(row);
-
-/*    if (row === this.selectedRow && !this.isSelected) {
+    if (this.isSelected && row === this.selectedRow) {
+      this.buttonDisabled = true;
       this.isSelected = !this.isSelected;
-      this.buttonDisabled = !this.isSelected;
-    } else if (row !== this.selectedRow) {
+    } else if (!this.isSelected) {
       this.buttonDisabled = false;
-      this.isSelected = true;
-    }*/
-
-    this.buttonDisabled = false;
+      this.isSelected = !this.isSelected;
+    }
     this.selectedRow = row;
-
-
   }
 
   deleteEmployee() {

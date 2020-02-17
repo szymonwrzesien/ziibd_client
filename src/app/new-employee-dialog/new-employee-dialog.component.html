@@ -1,37 +1,51 @@
 <div class="container">
-  <!--grid material na 2 kolumny-->
 
-  <mat-form-field appearance="fill">
-    <mat-label>First Name</mat-label>
-    <input matInput [(ngModel)]="newEmployee.firstName">
-  </mat-form-field>
+  <div class="upRow">
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="newEmployee.firstName" required>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Last Name</mat-label>
-    <input matInput [(ngModel)]="newEmployee.lastName">
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput [(ngModel)]="newEmployee.lastName" required>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput [(ngModel)]="newEmployee.email">
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="newEmployee.email" required>
+    </mat-form-field>
+  </div>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Phone Number</mat-label>
-    <input matInput [(ngModel)]="newEmployee.phoneNumber">
-  </mat-form-field>
+  <div class="downRow">
+    <mat-form-field appearance="fill">
+      <mat-label>Job Id</mat-label>
+      <mat-select [(ngModel)]="newEmployee.jobId" required>
+        <mat-option value="AD_PRES">AD_PRES</mat-option>
+        <mat-option value="AD_VP">AD_VP</mat-option>
+        <mat-option value="AD_ASST">AD_ASST</mat-option>
+        <mat-option value="AC_MGR">AC_MGR</mat-option>
+        <mat-option value="AC_ACCOUNT">AC_ACCOUNT</mat-option>
+        <mat-option value="SA_MAN">SA_MAN</mat-option>
+        <mat-option value="SA_REP">SA_REP</mat-option>
+        <mat-option value="ST_MAN">ST_MAN</mat-option>
+        <mat-option value="ST_CLERK">ST_CLERK</mat-option>
+        <mat-option value="IT_PROG">IT_PROG</mat-option>
+        <mat-option value="MK_MAN">MK_MAN</mat-option>
+        <mat-option value="MK_REP">MK_REP</mat-option>
+      </mat-select>
+    </mat-form-field>
 
+    <mat-form-field appearance="fill">
+      <mat-label>Phone Number</mat-label>
+      <input matInput [(ngModel)]="newEmployee.phoneNumber">
+    </mat-form-field>
 
-<!--  <mat-form-field appearance="fill">
-    <mat-label>Job Id</mat-label>
-    <input matInput [(ngModel)]="newEmployee.jobId">
-  </mat-form-field>-->
-
-  <mat-form-field appearance="fill">
-    <mat-label>Salary</mat-label>
-    <input matInput [(ngModel)]="newEmployee.salary">
-  </mat-form-field>
-
+    <mat-form-field appearance="fill">
+      <mat-label>Salary</mat-label>
+      <input matInput [(ngModel)]="newEmployee.salary">
+    </mat-form-field>
+  </div>
 
   <button mat-flat-button color="accent" (click)="Add()">add</button>
 </div>

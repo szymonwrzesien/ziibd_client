@@ -10,10 +10,10 @@ import {MatDialogRef} from '@angular/material';
 })
 export class NewEmployeeDialogComponent implements OnInit {
   newEmployee: Employee;
+  // disabled = true;
 
 
-  constructor(private dataService: DataService, public dialogRef: MatDialogRef<NewEmployeeDialogComponent>) {
-  }
+  constructor(private dataService: DataService, public dialogRef: MatDialogRef<NewEmployeeDialogComponent>) {}
 
   ngOnInit() {
     this.newEmployee = new Employee();
@@ -22,6 +22,14 @@ export class NewEmployeeDialogComponent implements OnInit {
   Add() {
     this.dataService.saveNewEmployee(this.newEmployee).subscribe();
     this.dialogRef.close();
+  }
+
+/*  checkValue() {
+    if (this.newEmployee.firstName !== null && this.newEmployee.email !== null) {
+      this.disabled = false;
+    }
+  }*/
+  triggerJobId() {
 
   }
 }

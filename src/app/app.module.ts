@@ -20,6 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { DataTableJobsComponent } from './data-table/jobs/data-table-jobs.component';
 import { NewEmployeeDialogComponent } from './new-employee-dialog/new-employee-dialog.component';
 import {FormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {FormsModule} from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   entryComponents: [
     NewEmployeeDialogComponent
@@ -53,3 +55,4 @@ import {FormsModule} from '@angular/forms';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
