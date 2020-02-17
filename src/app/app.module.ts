@@ -19,7 +19,7 @@ import { AppRoutingModule, routingComponents} from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import { DataTableJobsComponent } from './data-table/jobs/data-table-jobs.component';
 import { NewEmployeeDialogComponent } from './new-employee-dialog/new-employee-dialog.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
@@ -46,7 +46,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     NewEmployeeDialogComponent

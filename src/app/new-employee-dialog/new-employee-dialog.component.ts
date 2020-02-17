@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Employee} from '../model/Employee';
 import {DataService} from '../services/data.service';
-import {MatDialogRef} from '@angular/material';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-new-employee-dialog',
@@ -10,13 +10,15 @@ import {MatDialogRef} from '@angular/material';
 })
 export class NewEmployeeDialogComponent implements OnInit {
   newEmployee: Employee;
-  // disabled = true;
 
 
-  constructor(private dataService: DataService, public dialogRef: MatDialogRef<NewEmployeeDialogComponent>) {}
+
+  constructor(private dataService: DataService, @Inject(MAT_DIALOG_DATA) public data: any,
+              public dialogRef: MatDialogRef<NewEmployeeDialogComponent>) {}
 
   ngOnInit() {
     this.newEmployee = new Employee();
+    // this.newEmployee = this.data;
   }
 
   Add() {
@@ -24,12 +26,7 @@ export class NewEmployeeDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-/*  checkValue() {
-    if (this.newEmployee.firstName !== null && this.newEmployee.email !== null) {
-      this.disabled = false;
-    }
-  }*/
-  triggerJobId() {
+  validEmail() {
 
   }
 }

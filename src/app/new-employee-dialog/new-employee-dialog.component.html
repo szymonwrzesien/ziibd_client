@@ -1,26 +1,27 @@
 <div class="container">
-
+<form #userForm="ngForm" (ngSubmit)="Add()">
   <div class="upRow">
+
     <mat-form-field appearance="fill">
       <mat-label>First Name</mat-label>
-      <input matInput [(ngModel)]="newEmployee.firstName" required>
+      <input  matInput [(ngModel)]="newEmployee.firstName" name="firstName" required>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Last Name</mat-label>
-      <input matInput [(ngModel)]="newEmployee.lastName" required>
+      <input matInput [(ngModel)]="newEmployee.lastName" name="lastName" required>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
-      <input matInput [(ngModel)]="newEmployee.email" required>
+      <input matInput [(ngModel)]="newEmployee.email" name="email" required (keypress)="validEmail()">
     </mat-form-field>
   </div>
 
   <div class="downRow">
     <mat-form-field appearance="fill">
       <mat-label>Job Id</mat-label>
-      <mat-select [(ngModel)]="newEmployee.jobId" required>
+      <mat-select [(ngModel)]="newEmployee.jobId" name="jobId"required>
         <mat-option value="AD_PRES">AD_PRES</mat-option>
         <mat-option value="AD_VP">AD_VP</mat-option>
         <mat-option value="AD_ASST">AD_ASST</mat-option>
@@ -38,14 +39,15 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Phone Number</mat-label>
-      <input matInput [(ngModel)]="newEmployee.phoneNumber">
+      <input matInput [(ngModel)]="newEmployee.phoneNumber" name="phoneNumber" >
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Salary</mat-label>
-      <input matInput [(ngModel)]="newEmployee.salary">
+      <input matInput [(ngModel)]="newEmployee.salary" name="salary">
     </mat-form-field>
   </div>
 
-  <button mat-flat-button color="accent" (click)="Add()">add</button>
+  <button mat-flat-button color="accent" type="submit" [disabled]="userForm.form.invalid">add</button>
+</form>
 </div>
