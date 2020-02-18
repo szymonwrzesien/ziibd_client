@@ -32,8 +32,7 @@ export class DataTableEmployeesComponent implements OnInit {
     'phoneNumber'];
   employeesArray: Employee[] = [];
 
-  constructor(private dataService: DataService, public dialog: MatDialog) {
-  }
+  constructor(private dataService: DataService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.dataService.getEmployees().subscribe(data => {
@@ -55,15 +54,27 @@ export class DataTableEmployeesComponent implements OnInit {
   }
 
   openDialog(isUpdate: boolean): void {
-    /*    if (isUpdate === true) {
-
-        }*/
-    const dialogRef = this.dialog.open(NewEmployeeDialogComponent, {});
-
-    dialogRef.afterClosed().subscribe(result => {
-
-      this.dataService.getEmployees().subscribe(data => this.saveDataFromServer(data));
-    });
+    if (isUpdate) {
+      const dialogRef = this.dialog.open(NewEmployeeDialogComponent, {
+        data: {
+          value: this.selectedRow,
+          update: true
+        }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.dataService.getEmployees().subscribe(data => this.saveDataFromServer(data));
+      });
+    } else {
+      const dialogRef = this.dialog.open(NewEmployeeDialogComponent, {
+        data: {
+          value: new Employee(),
+          update: false
+        }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.dataService.getEmployees().subscribe(data => this.saveDataFromServer(data));
+      });
+    }
 
   }
 
@@ -80,12 +91,12 @@ export class DataTableEmployeesComponent implements OnInit {
   }
 
   deleteEmployee() {
-    this.dataService.deleteEmployee(this.selectedRow).subscribe();
-    this.dataService.getEmployees().subscribe(data => this.saveDataFromServer(data));
+    this.dataService.deleteEmployee(this.selectedRow).subscribe(data => this.saveDataFromServer(data));
   }
 
   updateEmployee() {
     this.openDialog(true);
-
   }
+
+
 }

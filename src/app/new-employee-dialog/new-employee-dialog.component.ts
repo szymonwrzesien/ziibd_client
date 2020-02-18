@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Employee} from '../model/Employee';
 import {DataService} from '../services/data.service';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-new-employee-dialog',
@@ -10,23 +10,29 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class NewEmployeeDialogComponent implements OnInit {
   newEmployee: Employee;
-
+  update: boolean;
 
 
   constructor(private dataService: DataService, @Inject(MAT_DIALOG_DATA) public data: any,
-              public dialogRef: MatDialogRef<NewEmployeeDialogComponent>) {}
+              public dialogRef: MatDialogRef<NewEmployeeDialogComponent>) {
+  }
 
   ngOnInit() {
-    this.newEmployee = new Employee();
-    // this.newEmployee = this.data;
+    this.newEmployee = this.data.value;
+    this.update = this.data.update;
   }
 
   Add() {
-    this.dataService.saveNewEmployee(this.newEmployee).subscribe();
+    if (this.update) {
+      this.dataService.updateEmployee(this.newEmployee).subscribe();
+    } else {
+      this.dataService.saveNewEmployee(this.newEmployee).subscribe();
+    }
+
     this.dialogRef.close();
   }
 
-  validEmail() {
+  validEmail() {//.email ===
 
   }
 }

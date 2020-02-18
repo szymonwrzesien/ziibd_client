@@ -27,8 +27,8 @@ export class DataService {
     return this.http.post(URL + '/saveNewEmployee', employee);
   }
 
-  deleteEmployee(employee: Employee) {
-    return this.http.post(URL + '/deleteEmployee', employee);
+  deleteEmployee(employee: Employee): Observable <Employee[]> {
+    return this.http.post<Employee[]>(URL + '/deleteEmployee', employee);
   }
 
   updateEmployee(employee: Employee) {
