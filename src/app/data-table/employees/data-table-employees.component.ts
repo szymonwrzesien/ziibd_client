@@ -58,7 +58,8 @@ export class DataTableEmployeesComponent implements OnInit {
       const dialogRef = this.dialog.open(NewEmployeeDialogComponent, {
         data: {
           value: this.selectedRow,
-          update: true
+          update: true,
+          array: this.employeesArray
         }
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -68,7 +69,8 @@ export class DataTableEmployeesComponent implements OnInit {
       const dialogRef = this.dialog.open(NewEmployeeDialogComponent, {
         data: {
           value: new Employee(),
-          update: false
+          update: false,
+          array: this.employeesArray
         }
       });
       dialogRef.afterClosed().subscribe(result => {

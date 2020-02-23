@@ -21,6 +21,7 @@ import { DataTableJobsComponent } from './data-table/jobs/data-table-jobs.compon
 import { NewEmployeeDialogComponent } from './new-employee-dialog/new-employee-dialog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import { EmailValidDialogComponent } from './email-valid-dialog/email-valid-dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatSelectModule} from '@angular/material/select';
     MenuComponent,
     routingComponents,
     DataTableJobsComponent,
-    NewEmployeeDialogComponent
+    NewEmployeeDialogComponent,
+    EmailValidDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule
   ],
   entryComponents: [
-    NewEmployeeDialogComponent
+    NewEmployeeDialogComponent,
+    EmailValidDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
