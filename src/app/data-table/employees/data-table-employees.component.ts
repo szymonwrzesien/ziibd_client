@@ -32,14 +32,15 @@ export class DataTableEmployeesComponent implements OnInit {
     'phoneNumber'];
   employeesArray: Employee[] = [];
 
-  constructor(private dataService: DataService, public dialog: MatDialog) {}
+  constructor(private dataService: DataService, public dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.dataService.getEmployees().subscribe(data => {
       this.saveDataFromServer(data);
-
     });
   }
+
 
   saveDataFromServer(data: any) {
     this.employeesArray = data;
@@ -63,7 +64,13 @@ export class DataTableEmployeesComponent implements OnInit {
         }
       });
       dialogRef.afterClosed().subscribe(result => {
-        this.dataService.getEmployees().subscribe(data => this.saveDataFromServer(data));
+        this.dataService.getEmployees().subscribe(
+          data => {
+            this.saveDataFromServer(data);
+            this.buttonDisabled = true;
+            this.isSelected = false;
+            this.selectedRow = null;
+          });
       });
     } else {
       const dialogRef = this.dialog.open(NewEmployeeDialogComponent, {
@@ -74,7 +81,13 @@ export class DataTableEmployeesComponent implements OnInit {
         }
       });
       dialogRef.afterClosed().subscribe(result => {
-        this.dataService.getEmployees().subscribe(data => this.saveDataFromServer(data));
+        this.dataService.getEmployees().subscribe(
+          data => {
+            this.saveDataFromServer(data);
+            this.buttonDisabled = true;
+            this.isSelected = false;
+            this.selectedRow = null;
+          });
       });
     }
 
@@ -93,11 +106,19 @@ export class DataTableEmployeesComponent implements OnInit {
   }
 
   deleteEmployee() {
-    this.dataService.deleteEmployee(this.selectedRow).subscribe(data => this.saveDataFromServer(data));
+    this.dataService.deleteEmployee(this.selectedRow).subscribe(
+      data => {
+        this.saveDataFromServer(data);
+        this.buttonDisabled = true;
+        this.selectedRow = null;
+        this.isSelected = false;
+      });
+
   }
 
   updateEmployee() {
     this.openDialog(true);
+
   }
 
 
